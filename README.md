@@ -1,65 +1,76 @@
 # Docker: PHP & MySQL
 
-Instala rápidamente un ambiente de desarrollo local para trabajar con [PHP](https://www.php.net/) y [MySQL](https://www.mysql.com/) utilizando [Docker](https://www.docker.com). 
+Instal·la ràpidament un entorn de desenvolupament local per treballar amb [PHP](https://www.php.net/) i [MySQL](https://www.mysql.com/) utilitzant [Docker](https://www.docker.com).
 
-Utilizar *Docker* es sencillo, pero existen tantas imágenes, versiones y formas para crear los contenedores que hacen tediosa esta tarea. Este proyecto ofrece una instalación rápida, con versiones estandar y con la mínima cantidad de modificaciones a las imágenes de Docker. 
+## Configurar l'entorn de desenvolupament
 
-Viene configurado con  `PHP 7.4` y `MySQL 5.7`, además se incluyen las extensiones `gd`, `zip` y `mysql`.
+Es pot utilitzar la configuració per defecte, però en ocasions és recomanable modificar la configuració perquè sigui igual al servidor de producció. La configuració es troba a l'arxiu `.env` amb les següents opcions:
 
-## Requerimientos
+* `PHP_PORT` port pel servidor web.
+* `MYSQL_VERSION` versió de MySQL([Versions disponibles de MySQL](https://hub.docker.com/_/mysql)).
+* `MYSQL_USER` nom d'usuari per connectar-se a MySQL.
+* `MYSQL_PASSWORD` clau d'accés per conectar-se a MySQL.
+* `MYSQL_DATABASE` nom de la base de dades que es crea per defecte.
 
-* [Docker Desktop](https://www.docker.com/products/docker-desktop)
+## Instal·lar l'entorn de desenvolupament
 
-## Configurar el ambiente de desarrollo
-
-Puedes utilizar la configuración por defecto, pero en ocasiones es recomendable modificar la configuración para que sea igual al servidor de producción. La configuración se ubica en el archivo `.env` con las siguientes opciones:
-
-* `PHP_VERSION` versión de PHP ([Versiones disponibles de PHP](https://github.com/docker-library/docs/blob/master/php/README.md#supported-tags-and-respective-dockerfile-links)).
-* `PHP_PORT` puerto para servidor web.
-* `MYSQL_VERSION` versión de MySQL([Versiones disponibles de MySQL](https://hub.docker.com/_/mysql)).
-* `MYSQL_USER` nombre de usuario para conectarse a MySQL.
-* `MYSQL_PASSWORD` clave de acceso para conectarse a MySQL.
-* `MYSQL_DATABASE` nombre de la base de datos que se crea por defecto.
-
-## Instalar el ambiente de desarrollo
-
-La instalación se hace en línea de comandos:
+La instal·lació es fa en línia de comandes:
 
 ```zsh
 docker-compose up -d
 ```
-Puedes verificar la instalación accediendo a: [http://localhost/info.php](http://localhost/info.php)
 
-## Comandos disponibles
+Pots verificar la instal·lació accedint a: [http://localhost/info.php](http://localhost/info.php)
 
-Una vez instalado, se pueden utilizar los siguiente comandos:
+## Comandaments disponibles
+
+Un cop instal·lat, es poden utilitzar els següents comandaments:
 
 ```zsh
-docker-compose start    # Iniciar el ambiente de desarrollo
-docker-compose stop     # Detener el ambiente de desarrollo
-docker-compose down     # Detener y eliminar el ambiente de desarrollo.
+docker-compose start    # Iniciar l'entorn de desenvolupament
+docker-compose stop     # Parar l'entorn de desenvolupament (no usat habitualment)
+docker-compose down     # Para i elimina l'entorn de desenvolupament
+docker-compose restart  # Reiniciar l'entorn de desenvolupament
 ```
 
-## Estructura de Archivos
+## Estructura d'arxius
 
-* `/docker/` contiene los archivos de configuración de Docker.
-* `/www/` carpeta para los archivos PHP del proyecto.
+* `/docker/` conté els arxius de configuració de Docker.
+* `/www/` carpeta pels arxius PHP del projecte.
 
 ## Accesos
 
 ### Web
 
-* http://localhost/
+* `http://localhost/`
 
-### Base de datos
+### Base de dades
 
-Existen dos dominios para conectarse a base de datos.
+Per accedir al gestor de la base de dades.
 
-* `mysql`: para conexión desde los archivos PHP.
-* `localhost`: para conexiones externas al contenedor.
+* `mysql`: per connexió des de els arxius PHP.
+* `localhost`: per connexions externes.
 
-Las credenciales por defecto para la conexión son:
+Les credencials per defecte per la connexió són:
 
-| Usuario | Clave | Base de datos |
-|:---:|:---:|:---:|
-| dbuser | dbpass | dbname |
+| Usuari |  Clau  | Base de dades |
+|:------:|:------:|:-------------:|
+| dbuser | dbpass |     dbname    |
+
+### Creació de bases de dades
+
+Utilitzant l'extensió de `VSCode` o `Azure Data Studio` ens connectem al servidor de MySQL i creem la base de dades.
+
+![Connexió a MySQL](./img/pic01.png)
+
+Un cop connectats, creem una nova consulta per tal de definir la taula i ompliar-la amb dades.
+
+![Creació de la taula](./img/pic02.png)
+
+Podem veure que la taula s'ha creat correctament.
+
+![Taula creada](./img/pic03.png)
+
+Ara des de l'app de PHP podem veure les dades de la taula.
+
+![Dades de la taula](./img/pic04.png)
