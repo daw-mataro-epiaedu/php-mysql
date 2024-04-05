@@ -1,4 +1,4 @@
-# Docker: PHP & MySQL
+# Docker Compose: PHP & MySQL
 
 Instal·la ràpidament un entorn de desenvolupament local per treballar amb [PHP](https://www.php.net/) i [MySQL](https://www.mysql.com/) utilitzant [Docker](https://www.docker.com).
 
@@ -7,7 +7,6 @@ Instal·la ràpidament un entorn de desenvolupament local per treballar amb [PHP
 Es pot utilitzar la configuració per defecte, però en ocasions és recomanable modificar la configuració perquè sigui igual al servidor de producció. La configuració es troba a l'arxiu `.env` amb les següents opcions:
 
 * `PHP_PORT` port pel servidor web.
-* `MYSQL_VERSION` versió de MySQL([Versions disponibles de MySQL](https://hub.docker.com/_/mysql)).
 * `MYSQL_USER` nom d'usuari per connectar-se a MySQL.
 * `MYSQL_PASSWORD` clau d'accés per conectar-se a MySQL.
 * `MYSQL_DATABASE` nom de la base de dades que es crea per defecte.
@@ -17,7 +16,7 @@ Es pot utilitzar la configuració per defecte, però en ocasions és recomanable
 La instal·lació es fa en línia de comandes:
 
 ```zsh
-docker-compose up -d
+docker-compose up -d --build
 ```
 
 Pots verificar la instal·lació accedint a: [http://localhost/info.php](http://localhost/info.php)
@@ -40,7 +39,7 @@ docker-compose restart  # Reiniciar l'entorn de desenvolupament
 
 ## Accesos
 
-### Web
+### Aplicació PHP
 
 * `http://localhost/`
 
@@ -59,7 +58,7 @@ Les credencials per defecte per la connexió són:
 
 ### Creació de bases de dades
 
-Utilitzant l'extensió de `VSCode` o `Azure Data Studio` ens connectem al servidor de MySQL i creem la base de dades.
+Utilitzant l'extensió `MySQL` per `VSCode` o `Azure Data Studio` ens connectem al servidor de MySQL i creem la base de dades. A l'exemple, ho fem utilitzant `Azure Data Studio`.
 
 ![Connexió a MySQL](./img/pic01.png)
 
