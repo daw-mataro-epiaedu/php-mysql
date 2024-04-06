@@ -88,3 +88,9 @@ Podem veure que la taula s'ha creat correctament.
 Ara des de l'app de PHP podem veure les dades de la taula.
 
 ![Dades de la taula](./img/pic04.png)
+
+## Referències
+
+-[Doc4Dev. Configure a WEB site (PHP-Apache-Mysql) in 5 minutes with Docker. Publicat: 19/06/2022](https://doc4dev.com/en/create-a-web-site-php-apache-mysql-in-5-minutes-with-docker/)
+
+-[Thrive Read. Install PHP Extensions with docker php-ext-install and Pecl Commands. Publicat: 28/11/2023](https://thriveread.com/docker-php-ext-install-and-pecl-install/)
