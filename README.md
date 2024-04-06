@@ -11,6 +11,21 @@ Es pot utilitzar la configuració per defecte, però en ocasions és recomanable
 * `MYSQL_PASSWORD` clau d'accés per conectar-se a MySQL.
 * `MYSQL_DATABASE` nom de la base de dades que es crea per defecte.
 
+### Servidor Aplicacions PHP
+
+Es crea una imatge personalitzada per a PHP a partir de la versió oficial de `php:8.1-apache`.
+
+```Dockerfile
+FROM php:8.1-apache
+RUN apt update && \
+    docker-php-ext-install mysqli pdo pdo_mysql && \
+    apt clean
+```
+
+Utilitzem la comanda `docker-php-ext-install` per instal·lar les extensions de PHP necessàries per connectar-se a MySQL: mysqli, pdo i pdo_mysql.
+
+La comanda `docker-php-ext-install` és un script especial de shell a la imatge oficial de PHP on PHP s'ha instal·lat des del codi font. Compilarà i instal·larà les extensions necessàries i és la forma recomanada per instal·lar extensions de PHP sobre una imatge oficial de PHP.
+
 ## Instal·lar l'entorn de desenvolupament
 
 La instal·lació es fa en línia de comandes:
