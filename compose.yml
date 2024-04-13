@@ -5,22 +5,18 @@ volumes:
 networks:
   network-id:
     name: ${PROJECT_NAME}-network
-secrets:
-  db_password:
-    file: ./secrets/db_password.txt
+
 services:
   mysql:
     image:  mysql:latest
     environment:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: /run/secrets/db_password
-      MYSQL_ROOT_PASSWORD: /run/secrets/db_password
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
 
     volumes:
       - mysql-data:/var/lib/mysql
-    secrets:
-      - db_password
     ports:
       - "3306:3306"
     restart: always
